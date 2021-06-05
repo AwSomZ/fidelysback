@@ -1,0 +1,23 @@
+{% extends '/admin/index.html.twig' %}
+
+{% block wrapper %}
+ <link href="../css/accounts.css" rel="stylesheet" />
+<div class="e">
+
+{% for c in client %}
+
+<div class="card">
+  <img src="" alt="Avatar" style="width:100%">
+  <div class="container">
+   <h4> <b>{{c.nom}} {{c.prenom}}</b></h4>
+    <p>{{u.type}}</p>
+    
+    <a  class="lien" href=""style="width:20%">Supprimer</a> 
+  </div>
+</div>
+
+    {% endfor %}
+ 
+    </div>
+    
+{% endblock %}

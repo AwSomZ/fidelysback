@@ -1,0 +1,72 @@
+{% extends '/dashboard/index.html.twig' %}
+
+{% block wrapper %}
+ <link href="../css/consult.css" rel="stylesheet" />
+ <link rel="stylesheet" href="../css/style.css" type="text/css">
+ <style>
+ .im {
+     width:100%;
+ }
+ </style>
+<div class="e">
+  <div class="card">
+  <center><p style="font-weight:bold;font-size:40px;color:red">Detail Du Reclamation</p></center>
+    <div class="container">
+    </br>
+    
+    <center>
+    <table class="rectable" border=1>
+      <tr>
+        <td>Id</td>
+        <td>{{reclamation.id}}</td>
+      </tr>
+      <tr>
+        <td>Lancé par</td>
+        <td> <a href="/consulterclient/{{reclamation.client.id}}"> {{reclamation.client.id}} - Visiter Le Profil</a></td>
+      </tr>
+      <tr>
+        <td>Titre</td> 
+        <td> {{reclamation.titre}}</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td> {{reclamation.description}}</td>
+      </tr> 
+      <tr>
+        <td>Date de creation</td>
+        <td> {{reclamation.datecreation|date('Y-m-d')}}</td>
+      </tr> 
+      <tr>
+        <td>Etat</td>
+        <td style="color:orange;"> {{reclamation.etat}}     </td>
+      </tr>
+      {% if reclamation.etat == 'resolu' %}
+      <tr>
+        <td>Resolu Par</td>
+        <td > {{reclamation.admin.username}}     </td>
+      </tr>
+      {% endif %}
+     
+      </table>
+      </center>
+      </br>
+      
+      {% if reclamation.etat == 'en cours' %}
+      {% if reclamation.admin is empty %}
+      <a  class="lien" href="/reply/{{reclamation.id}}" style="width:85%">Lancer La Disscussion</a>
+      <a  class="lien" href="/changeretat/{{reclamation.id}}" style="width:85%">marquer comme résolu</a>
+      <a  class="lien" href="/deletereclamationenc/{{reclamation.id}}" style="width:85%">Supprimer</a>
+      {% else %}
+      <a  class="lien" href="/changeretat/{{reclamation.id}}" style="width:85%">marquer comme résolu</a>
+      <a  class="lien" href="/deletereclamationenc/{{reclamation.id}}" style="width:85%">Supprimer</a>
+      {% endif %}
+      {% else %}
+      <a  class="lien" href="/deletereclamationres/{{reclamation.id}}" style="width:85%">Supprimer</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+   
+{% endblock %}

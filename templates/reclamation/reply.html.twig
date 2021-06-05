@@ -1,0 +1,21 @@
+{% extends '/dashboard/index.html.twig' %}
+
+{% block wrapper %}
+<center><p class="title">Contacter Le Client</p></center>
+
+<link href="../css/reply.css" rel="stylesheet" />
+<div class="holder">
+<form action="/sendmail/{{app.user.id}}/{{reclamation.id}}" >
+<center><p class="sous">Email Du Client</p></center>
+<br>
+<input type="email"  name="to" class="form-control"  id="to" value="{{reclamation.client.email}}"/>
+<br>
+<center><p class="sous">Contenu De l'Email</p></center>
+<br>
+<textarea class="form-control" id="email" name="email"></textarea>
+<br>
+<center><input type="submit" id="send" class="btn btn-danger btn-lg" value="envoyer"/> </center>
+</form>
+</div>
+ 
+{% endblock %}

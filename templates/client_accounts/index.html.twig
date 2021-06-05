@@ -1,0 +1,40 @@
+{% extends '/dashboard/index.html.twig' %}
+
+{% block wrapper %}
+ <link href="../css/client.css" rel="stylesheet" />
+ <center>
+ </br>
+ <form action="/rechercherclient" >
+  <input type="text" name="id" placeholder="Identifiant" >
+  <input type="submit" value="Rechercher" class="button">
+  </form>
+  {% for flashMessage in app.session.flashbag.get('notice') %}
+
+<div class="alert alert-notice" style=" color:red ;">
+    {{ flashMessage }}
+</div>
+{% endfor %}
+</center>
+
+<div class="e">
+
+{% for c in client %}
+
+<div class="card">
+  <img src="../img/{{c.sexe}}.png" alt="Avatar" style="width:100%">
+  <div class="container">
+   <h4> <b>{{c.nom}} {{c.prenom}}</b></h4>
+    <p>{{c.id}}</p>
+    
+    <a  class="lien" href="/consulterclient/{{c.id}}" style="width:19%;text-alignment=center">Consulter</a> 
+   
+    
+  </div>
+</div>
+
+    {% endfor %}
+ 
+    </div>
+  
+    <center>{{ knp_pagination_render(client) }}</center>
+{% endblock %}

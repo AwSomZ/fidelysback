@@ -1,0 +1,39 @@
+{% extends '/dashboard/index.html.twig' %}
+
+{% block wrapper %}
+ <link href="../css/user.css" rel="stylesheet" />
+ <center>
+ </br>
+ <form action="/rechercheruser" >
+  <input type="text" name="id" placeholder="Identifiant" >
+  <input type="submit" value="Rechercher" class="button">
+  </form>
+  {% for flashMessage in app.session.flashbag.get('notice') %}
+
+<div class="alert alert-notice" style=" color:red ;">
+    {{ flashMessage }}
+</div>
+{% endfor %}
+</center>
+<div class="e">
+
+{% for u in user %}
+
+<div class="card">
+  <img src="../img/{{u.sexe}}.png" alt="Avatar" style="width:100%">
+  <div class="container">
+   <h4> <b>{{u.nom}} {{u.prenom}}</b></h4>
+    <p>{{u.id}}</p>
+    
+    <a  class="lien" href="/consulteruser/{{u.id}}" style="width:19%;text-alignment=center">Consulter</a> 
+   
+    
+  </div>
+</div>
+
+    {% endfor %}
+ 
+    </div>
+  
+    <center>{{ knp_pagination_render(user) }}</center>
+{% endblock %}
