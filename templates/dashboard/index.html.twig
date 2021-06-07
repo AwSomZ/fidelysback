@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>dashboard Administrateur</title>
+    <link rel="shortcut icon" class="fa fa-sitemap" type="image/x-icon">
     <!-- Bootstrap Styles-->
      {% block stylesheets %}
     <link href="../css/bootstrap.css" rel="stylesheet" />
@@ -111,14 +112,10 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
       {% block wrapper %}
-		
-		  
-        
-
         <div class="analytic">
-        <div class="col-md-3 col-sm-12 col-xs-12">
-					<div class="board">
-                        <div class="panel panel-primary">
+            
+				<div class="board">
+                    <div class="panel panel-primary">
 						<div class="number">
 							<h3>
 								<h3>{{nombrev}}</h3>
@@ -128,15 +125,15 @@
 						<div class="icon">
 						   <i class="fa fa-check fa-5x green"></i>
 						</div>
-		 
-                        </div>
-						</div>
                     </div>
-                </div>
-                <div class="analytic">
-                       <div class="col-md-3 col-sm-12 col-xs-12">
-					<div class="board">
-                        <div class="panel panel-primary">
+				</div>
+            
+        </div>
+
+        <div class="analytic">
+            
+				<div class="board">
+                    <div class="panel panel-primary">
 						<div class="number">
 							<h3>
 								<h3>{{nombreu}}</h3>
@@ -146,47 +143,64 @@
 						<div class="icon">
 						   <i class="fa fa-times fa-5x red"></i>
 						</div>
-		 
-                        </div>
-						</div>
                     </div>
-                    </div>
-                    <div class="analytic">
-        <div class="col-md-3 col-sm-12 col-xs-12">
-					<div class="board">
-                        <div class="panel panel-primary">
+				</div>
+            
+        </div>
+        <div class="analytic">
+            
+				<div class="board">
+                    <div class="panel panel-primary">
 						<div class="number">
 							<h3>
-								<h3>{{nombrev}}</h3>
+								<h3>{{nombrer}}</h3>
 								<small>Reclamations En Cours</small>
 							</h3> 
 						</div>
 						<div class="icon">
 						   <i class="fa fa-exclamation-triangle fa-5x orange"></i>
 						</div>
-		 
-                        </div>
+                    </div>
+				</div>
+            
+        </div>
+
+        <div class="analytics">
+            
+				<div class="board">
+                    <div class="panel panel-primary">
+						<div class="number">
+							<h3>
+								<h3>{{resoluparmoi}}</h3>
+								<small>Reclamations Résolu par moi</small>
+							</h3> 
+						</div>
+						<div class="icon">
+						   <i class="fa fa-exclamation-triangle fa-5x green"></i>
 						</div>
                     </div>
-                </div>
+				</div>
+            
+        </div>
 
-                <div class="col-sm-6 col-xs-12">
-                            <div class="panel panel-default chartJs">
-                                <div class="panel-heading">
-                                    <div class="card-title">
-                                        <div class="title">Pie & Doughnut Chart</div>
-                                    </div>
-                                </div>
-                                <div class="panel-body">
-                                    <canvas id="pie-chart" class="chart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-					
+        <div class="analytics">
+            
+				<div class="board">
+                    <div class="panel panel-primary">
+						<div class="number">
+							<h3>
+								<h3>{{traiteparmoi}}</h3>
+								<small>Reclamations Encours Traité par moi</small>
+							</h3> 
+						</div>
+						<div class="icon">
+						   <i class="fa fa-tasks fa-5x orange"></i>
+						</div>
+                    </div>
+				</div>
+            
+        </div>	
 
-         
-          							
-		
         {% endblock %}
         </div>
             

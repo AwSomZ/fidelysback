@@ -221,8 +221,18 @@ i.fa.fa-bars:hover {
 	background:#fff;
 }
 .analytic{
-    width: 135%;
+    display: inline-block;
+    margin: 1%;
+    position: relative;
+    width: 30%;
 }
+.analytics{
+    display: inline-block;
+    margin: 1%;
+    position: relative;
+    width: 40%;
+}
+
 
 .board .number{
 	float:left;

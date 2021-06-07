@@ -29,17 +29,36 @@ class DashboardController extends AbstractController
             ->select('count(b.id)')
             ->getQuery()
             ->getSingleScalarResult();
+        
+        $emm= $this->getDoctrine()->getManager();
+        $repoComplaintenc = $emm->getRepository(Reclamation::class);
+        $NbrComplaintenc = $repoComplaintenc->createQueryBuilder('d')
+            ->select('count(d.id)')
+            ->where('d.etat = :etat')
+            ->setParameter('etat', 'en cours');
+        $countenc = $NbrComplaintenc->getQuery()->getSingleScalarResult();  
+        
+        $emm = $this->getDoctrine()->getManager();
+        $repoComplaintme = $emm->getRepository(Reclamation::class);
+        $NbrComplaintme= $repoComplaintme->createQueryBuilder('e')
+            ->select('count(e.id)')
+            ->where('e.etat = :etat')
+            ->andWhere('e.admin = :admin')
+            ->setParameter('admin', $this->getUser()->getId())
+            ->setParameter('etat','resolu');
+        $countme = $NbrComplaintme->getQuery()->getSingleScalarResult();   
 
-        $em = $this->getDoctrine()->getManager();
-        $repoComplaint = $em->getRepository(Reclamation::class);
-        $NbrComplaint = $repoComplaint->createQueryBuilder('c')
-            ->select('count(c.id)')
-            ->getQuery()
-            ->getSingleScalarResult();    
-
+        $repoComplaintmeenc = $emm->getRepository(Reclamation::class);
+        $NbrComplaintmeenc= $repoComplaintmeenc->createQueryBuilder('f')
+            ->select('count(f.id)')
+            ->where('f.etat = :etat')
+            ->andWhere('f.admin = :admin')
+            ->setParameter('admin', $this->getUser()->getId())
+            ->setParameter('etat','en cours');
+        $countmeenc = $NbrComplaintmeenc->getQuery()->getSingleScalarResult();   
 
         return $this->render('dashboard/index.html.twig', [
-            'nombrev' => $NbrClient , 'nombreu' => $NbrUser , 'nombrer' => $NbrComplaint
+            'nombrev' => $NbrClient , 'nombreu' => $NbrUser , 'nombrer' => $countenc, 'resoluparmoi' => $countme , 'traiteparmoi' => $countmeenc
         ]);
     
     }

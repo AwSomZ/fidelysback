@@ -19,6 +19,24 @@ class ReclamationRepository extends ServiceEntityRepository
         parent::__construct($registry, Reclamation::class);
     }
 
+    /**
+     * @return Reclamation[]
+     */
+
+    public function findAllRec(string $str): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Reclamation p
+            WHERE p.etat = :st
+            '
+        )->setParameter('st', $str);
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
     // /**
     //  * @return Reclamation[] Returns an array of Reclamation objects
     //  */

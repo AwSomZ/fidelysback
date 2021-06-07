@@ -54,7 +54,7 @@ class ReclamationController extends AbstractController
         $rep=$doctrine->getRepository(Reclamation::class);
         $ad=$doctrine->getRepository(Admin::class);
         $admin=$ad->find($id);
-        $reclamations= $rep->findBy(['etat' => 'en cours' ,'admin' => $admin ]);
+        $reclamations= $rep->findBy([ 'admin' => $admin ]);
         $reclamation = $paginator->paginate(
             $reclamations, 
             $request->query->getInt('page', 1), 
