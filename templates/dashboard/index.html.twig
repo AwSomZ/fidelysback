@@ -2,219 +2,237 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>dashboard Administrateur</title>
     <link rel="shortcut icon" class="fa fa-sitemap" type="image/x-icon">
     <!-- Bootstrap Styles-->
-     {% block stylesheets %}
-    <link href="../css/bootstrap.css" rel="stylesheet" />
-    <!-- FontAwesome Styles-->
-    <link href="../css/font-awesome.css" rel="stylesheet" />
-    
-    <!-- Morris Chart Styles-->
-    <link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet" />
-    <!-- Custom Styles-->
-    <link href="../css/custom-styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <!-- Google Fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="../js/Lightweight-Chart/cssCharts.css"> 
+    {% block stylesheets %}
+      <link href="../css/bootstrap.css" rel="stylesheet"/>
+      <!-- FontAwesome Styles-->
+      <link href="../css/font-awesome.css" rel="stylesheet"/>
+
+      <!-- Morris Chart Styles-->
+      <link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet"/>
+      <!-- Custom Styles-->
+      <link href="../css/custom-styles.css" rel="stylesheet"/>
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+      <!-- Google Fonts-->
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+      <link rel="stylesheet" href="../js/Lightweight-Chart/cssCharts.css">
     {% endblock %}
-</head>
-{% block body %}
-<body>
-    <div id="wrapper">
+  </head>
+  {% block body %}
+    <body>
+      <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="http://www.rnta.tn/"><strong>Fidelys </strong></a>
-				
-		<div id="sideNav" href="">
-		<i class="fa fa-bars icon"></i> 
-		</div>
-            </div>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.rnta.tn/">
+              <strong>Fidelys
+              </strong>
+            </a>
 
-            <ul class="nav navbar-top-links navbar-right">
-                
-                      
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                      <li style="margin-left:2%;"><b >Connecté en tant que: </b> {{ app.user.username }}</a>
-                
-                        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
+            <div id="sideNav" href="">
+              <i class="fa fa-bars icon"></i>
+            </div>
+          </div>
+
+          <ul class="nav navbar-top-links navbar-right">
+
+            <!-- /.dropdown -->
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                <i class="fa fa-user fa-fw"></i>
+                <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                <li style="margin-left:2%;">
+                  <b >Connecté en tant que:
+                  </b>
+                  {{ app.user.username }}</a>
+
+              <li>
+                <a href="/logout">
+                  <i class="fa fa-sign-out fa-fw"></i>
+                  Logout</a>
+
             </ul>
-        </nav>
-        <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
-                
-                <label for="btn-1"><i class="fa fa-sitemap"></i>  Dashboard</span></label>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a class="active-menu" href="/dashboard">Dashboard</a>
-                    </li>
-                </ul>
-                    <li>
-                    
-                        <label for="btn-1"><i class="fa fa-sitemap"></i>  Comptes</span></label>
-                        
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a class="client" href="/client" tabindex="1"> Etat Compte Verifié</a>
-                                </li>
-                                <li>
-                                    <a class="user" href="/user" tabindex="2"> Etat Compte Non Verifié</a>
-                                </li>
-				
-                			</ul>
-				    </li>	
-							
+            <!-- /.dropdown-user -->
+          </li>
+          <!-- /.dropdown -->
+        </ul>
+      </nav>
+      <!--/. NAV TOP -->
+      <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+          <ul class="nav" id="main-menu">
 
-                    <li>
-                        <label for="btn-4"><i class="fa fa-sitemap"></i>  Reclamations</span></label>
-                       
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="reclamation" href="/reclamation" tabindex="5"> Etat Reclamations En Cours</a>
-                            </li>
-                            <li>
-                                <a class="reclamationres" href="/reclamationres" tabindex="6"> Etat Reclamations Résolus</a>
-                            </li>
-                             <li>
-                                <a class="mesreclamations" href="/mesreclamations/{{app.user.id}}" tabindex="7"> Etat Reclamations Traité Par Moi</a>
-                            </li>
-						</ul>
-				    </li>
-							
-                    
-                </ul> 
+            <label for="btn-1">
+              <i class="fa fa-sitemap"></i>
+              Dashboard</span></label>
+          <ul class="nav nav-second-level">
+            <li>
+              <a class="active-menu" href="/dashboard">Dashboard</a>
+            </li>
+          </ul>
+          <li>
 
-            </div>
+            <label for="btn-1">
+              <i class="fa fa-sitemap"></i>
+              Comptes</span></label>
 
-        </nav>
-        <!-- /. NAV SIDE  -->
-        <div id="page-wrapper">
-      {% block wrapper %}
-        <div class="analytic">
-            
-				<div class="board">
-                    <div class="panel panel-primary">
-						<div class="number">
-							<h3>
-								<h3>{{nombrev}}</h3>
-								<small>Comptes Verifiés</small>
-							</h3> 
-						</div>
-						<div class="icon">
-						   <i class="fa fa-check fa-5x green"></i>
-						</div>
-                    </div>
-				</div>
-            
+          <ul class="nav nav-second-level">
+            <li>
+              <a class="client" href="/client" tabindex="1">
+                Etat Compte Verifié</a>
+            </li>
+            <li>
+              <a class="user" href="/user" tabindex="2">
+                Etat Compte Non Verifié</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <li>
+          <label for="btn-4">
+            <i class="fa fa-sitemap"></i>
+            Reclamations</span></label>
+
+        <ul class="nav nav-second-level">
+          <li>
+            <a class="reclamation" href="/reclamation" tabindex="5">
+              Etat Reclamations En Cours</a>
+          </li>
+          <li>
+            <a class="reclamationres" href="/reclamationres" tabindex="6">
+              Etat Reclamations Résolus</a>
+          </li>
+          <li>
+            <a class="mesreclamations" href="/mesreclamations/{{app.user.id}}" tabindex="7">
+              Etat Reclamations Traité Par Moi</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+
+  </div>
+
+</nav>
+<!-- /. NAV SIDE -->
+<div id="page-wrapper">
+  {% block wrapper %}
+    <div class="analytic">
+
+      <div class="board">
+        <div class="panel panel-primary">
+          <div class="number">
+            <h3>
+              <h3>{{nombrev}}</h3>
+              <small>Comptes Verifiés</small>
+            </h3>
+          </div>
+          <div class="icon">
+            <i class="fa fa-check fa-5x green"></i>
+          </div>
         </div>
+      </div>
 
-        <div class="analytic">
-            
-				<div class="board">
-                    <div class="panel panel-primary">
-						<div class="number">
-							<h3>
-								<h3>{{nombreu}}</h3>
-								<small>Comptes Non Verifiés</small>
-							</h3> 
-						</div>
-						<div class="icon">
-						   <i class="fa fa-times fa-5x red"></i>
-						</div>
-                    </div>
-				</div>
-            
-        </div>
-        <div class="analytic">
-            
-				<div class="board">
-                    <div class="panel panel-primary">
-						<div class="number">
-							<h3>
-								<h3>{{nombrer}}</h3>
-								<small>Reclamations En Cours</small>
-							</h3> 
-						</div>
-						<div class="icon">
-						   <i class="fa fa-exclamation-triangle fa-5x orange"></i>
-						</div>
-                    </div>
-				</div>
-            
-        </div>
-
-        <div class="analytics">
-            
-				<div class="board">
-                    <div class="panel panel-primary">
-						<div class="number">
-							<h3>
-								<h3>{{resoluparmoi}}</h3>
-								<small>Reclamations Résolu par moi</small>
-							</h3> 
-						</div>
-						<div class="icon">
-						   <i class="fa fa-exclamation-triangle fa-5x green"></i>
-						</div>
-                    </div>
-				</div>
-            
-        </div>
-
-        <div class="analytics">
-            
-				<div class="board">
-                    <div class="panel panel-primary">
-						<div class="number">
-							<h3>
-								<h3>{{traiteparmoi}}</h3>
-								<small>Reclamations Encours Traité par moi</small>
-							</h3> 
-						</div>
-						<div class="icon">
-						   <i class="fa fa-tasks fa-5x orange"></i>
-						</div>
-                    </div>
-				</div>
-            
-        </div>	
-
-        {% endblock %}
-        </div>
-            
-        <!-- /. PAGE WRAPPER  -->
     </div>
-    <!-- /. WRAPPER  -->
-    <!-- JS Scripts-->
-    <!-- jQuery Js -->
-    <script src="../js/jquery-1.10.2.js"></script>
-    <!-- Bootstrap Js -->
-    <script src="../js/bootstrap.min.js"></script>
-	 
-    <!-- Metis Menu Js -->
-    <script src="../js/jquery.metisMenu.js"></script>
+
+    <div class="analytic">
+
+      <div class="board">
+        <div class="panel panel-primary">
+          <div class="number">
+            <h3>
+              <h3>{{nombreu}}</h3>
+              <small>Comptes Non Verifiés</small>
+            </h3>
+          </div>
+          <div class="icon">
+            <i class="fa fa-times fa-5x red"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="analytic">
+
+      <div class="board">
+        <div class="panel panel-primary">
+          <div class="number">
+            <h3>
+              <h3>{{nombrer}}</h3>
+              <small>Reclamations En Cours</small>
+            </h3>
+          </div>
+          <div class="icon">
+            <i class="fa fa-exclamation-triangle fa-5x orange"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="analytics">
+
+      <div class="board">
+        <div class="panel panel-primary">
+          <div class="number">
+            <h3>
+              <h3>{{resoluparmoi}}</h3>
+              <small>Reclamations Résolu par moi</small>
+            </h3>
+          </div>
+          <div class="icon">
+            <i class="fa fa-exclamation-triangle fa-5x green"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="analytics">
+
+      <div class="board">
+        <div class="panel panel-primary">
+          <div class="number">
+            <h3>
+              <h3>{{traiteparmoi}}</h3>
+              <small>Reclamations Encours Traité par moi</small>
+            </h3>
+          </div>
+          <div class="icon">
+            <i class="fa fa-tasks fa-5x orange"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  {% endblock %}
+</div>
+
+<!-- /. PAGE WRAPPER -->
+</div>
+<!-- /. WRAPPER -->
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="../js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="../js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Js -->
+<script src="../js/jquery.metisMenu.js"></script>
 
 </body>
 {% endblock %}

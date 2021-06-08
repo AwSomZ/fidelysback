@@ -1,52 +1,56 @@
 {% extends '/dashboard/index.html.twig' %}
 
 {% block wrapper %}
- <link href="../css/reclamationres.css" rel="stylesheet" />
-  <center>
- </br>
- <form action="/rechercherreclamationres" >
-  <input type="text" name="id" placeholder="Identifiant" >
-  <input type="submit" value="Rechercher" class="button">
+  <link href="../css/reclamationres.css" rel="stylesheet"/>
+  <center></br>
+  <form action="/rechercherreclamationres">
+    <input type="text" name="id" placeholder="Identifiant">
+    <input type="submit" value="Rechercher" class="button">
   </form>
   {% for flashMessage in app.session.flashbag.get('notice') %}
 
-<div class="alert alert-notice" style=" color:red ;">
-{{ flashMessage }}
-</div>
-{% endfor %}
+    <div class="alert alert-notice" style=" color:red ;">
+      {{ flashMessage }}
+    </div>
+  {% endfor %}
 </center>
 {% if reclamation is empty %}
-<center>
-<p class="nothing">Aucune reclamation à afficher</p>
-</center>
+  <center>
+    <p class="nothing">Aucune reclamation à afficher</p>
+  </center>
 {% else %}
 
-<center>
-<table border=1 class="reclamationtable" style="margin-left:1%;margin-right:1%">
-  <tr>
-  <th>Id</th><th>Lancer par</th><th>Titre</th><th>Description</th><th>Etat</th>
-  </tr>
+  <center>
+    <table border="1" class="reclamationtable" style="margin-left:1%;margin-right:1%">
+      <tr>
+        <th>Id</th>
+        <th>Lancer par</th>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Etat</th>
+      </tr>
 
-{% for r in reclamation %}
-<tr>
+      {% for r in reclamation %}
+        <tr>
 
+          <td>{{r.id}}</td>
+          <td>{{r.client.id}}</td>
+          <td>{{r.titre}}</td>
+          <td>
+            {{r.description}}</td>
+          <td>
+            {{r.etat}}</td>
+          <td>
+            <center>
+              <a class="lien" href="/consulterreclamationenc/{{r.id}}" style="width:80%">Detail</a>
+            </center>
+          </td>
+        </tr>
 
- 
-  
-    <td>{{r.id}}</td>
-    <td>{{r.client.id}}</td>
-    <td>{{r.titre}}</td>
-    <td>   {{r.description}}</td>
-     <td>  {{r.etat}}</td>
-     <td><center><a  class="lien" href="/consulterreclamationenc/{{r.id}}" style="width:80%">Detail</a></center></td>
-     </tr>
-  
-
-
-    {% endfor %}
+      {% endfor %}
     </tr>
-  
-    </table>
-    <center>{{ knp_pagination_render(reclamation) }}</center>
-    {% endif %}
+
+  </table>
+  <center>{{ knp_pagination_render(reclamation) }}</center>
+{% endif %}
 {% endblock %}
