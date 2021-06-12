@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Transaction
  *
  * @ORM\Table(name="transaction", indexes={@ORM\Index(name="client", columns={"client"})})
- * @ORM\Entity(repositoryClass="App\Repository\TransactionRepository")
+ * @ORM\Entity
  */
 class Transaction
 {
@@ -26,14 +26,14 @@ class Transaction
      *
      * @ORM\Column(name="credit", type="integer", nullable=false)
      */
-    private $credit = '0';
+    private $credit;
 
     /**
      * @var int
      *
      * @ORM\Column(name="debit", type="integer", nullable=false)
      */
-    private $debit = '0';
+    private $debit;
 
     /**
      * @var \DateTime
@@ -54,7 +54,7 @@ class Transaction
      *
      * @ORM\ManyToOne(targetEntity="Client")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="client", referencedColumnName="id",onDelete="CASCADE")
+     *   @ORM\JoinColumn(name="client", referencedColumnName="id")
      * })
      */
     private $client;

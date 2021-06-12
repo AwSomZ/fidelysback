@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Reclamation
  *
- * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="creepar", columns={"client"})})
- * @ORM\Entity(repositoryClass="App\Repository\ReclamationRepository")
+ * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="IDX_CE606404642B8210", columns={"admin_id"}), @ORM\Index(name="creepar", columns={"client"})})
+ * @ORM\Entity
  */
 class Reclamation
 {
@@ -50,19 +50,24 @@ class Reclamation
     private $etat = 'en cours';
 
     /**
+     * @var \Admin
+     *
+     * @ORM\ManyToOne(targetEntity="Admin")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="admin_id", referencedColumnName="id")
+     * })
+     */
+    private $admin;
+
+    /**
      * @var \Client
      *
      * @ORM\ManyToOne(targetEntity="Client")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="client", referencedColumnName="id",onDelete="CASCADE")
+     *   @ORM\JoinColumn(name="client", referencedColumnName="id")
      * })
      */
     private $client;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Admin::class)
-     */
-    private $admin;
 
     public function getId(): ?int
     {
@@ -117,6 +122,18 @@ class Reclamation
         return $this;
     }
 
+    public function getAdmin(): ?Admin
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(?Admin $admin): self
+    {
+        $this->admin = $admin;
+
+        return $this;
+    }
+
     public function getClient(): ?Client
     {
         return $this->client;
@@ -125,18 +142,6 @@ class Reclamation
     public function setClient(?Client $client): self
     {
         $this->client = $client;
-
-        return $this;
-    }
-
-    public function getAdmin(): ?admin
-    {
-        return $this->admin;
-    }
-
-    public function setAdmin(?admin $admin): self
-    {
-        $this->admin = $admin;
 
         return $this;
     }

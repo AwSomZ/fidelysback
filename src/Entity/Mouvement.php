@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Mouvement
  *
  * @ORM\Table(name="mouvement", indexes={@ORM\Index(name="client", columns={"client"})})
- * @ORM\Entity(repositoryClass="App\Repository\MouvementRepository")
+ * @ORM\Entity
  */
 class Mouvement
 {
@@ -33,7 +33,7 @@ class Mouvement
      *
      * @ORM\Column(name="milesstatut", type="integer", nullable=false)
      */
-    private $milesstatut = '0';
+    private $milesstatut;
 
     /**
      * @var int
@@ -47,7 +47,7 @@ class Mouvement
      *
      * @ORM\Column(name="soldecummule", type="integer", nullable=false)
      */
-    private $soldecummule = '0';
+    private $soldecummule;
 
     /**
      * @var \DateTime
@@ -75,14 +75,14 @@ class Mouvement
      *
      * @ORM\Column(name="seuil", type="integer", nullable=false)
      */
-    private $seuil = '0';
+    private $seuil;
 
     /**
      * @var \Client
      *
      * @ORM\ManyToOne(targetEntity="Client")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="client", referencedColumnName="id",onDelete="CASCADE")
+     *   @ORM\JoinColumn(name="client", referencedColumnName="id")
      * })
      */
     private $client;

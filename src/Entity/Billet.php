@@ -8,8 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Billet
  *
  * @ORM\Table(name="billet", indexes={@ORM\Index(name="client", columns={"client"})})
- * @ORM\Entity(repositoryClass="App\Repository\BilletRepository")
-
+ * @ORM\Entity
  */
 class Billet
 {
@@ -111,7 +110,7 @@ class Billet
      *
      * @ORM\ManyToOne(targetEntity="Client")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="client", referencedColumnName="id",onDelete="CASCADE")
+     *   @ORM\JoinColumn(name="client", referencedColumnName="id")
      * })
      */
     private $client;
