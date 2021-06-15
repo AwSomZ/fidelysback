@@ -38,14 +38,14 @@ class Billet
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datealler", type="date", nullable=false)
+     * @ORM\Column(name="datealler", type="datetime", nullable=false)
      */
     private $datealler;
 
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="dateretour", type="date", nullable=true)
+     * @ORM\Column(name="dateretour", type="datetime", nullable=true)
      */
     private $dateretour;
 
@@ -64,37 +64,9 @@ class Billet
     private $classe;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="adulte", type="integer", nullable=false)
-     */
-    private $adulte;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="jeune", type="integer", nullable=false)
-     */
-    private $jeune;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="enfant", type="integer", nullable=false)
-     */
-    private $enfant;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="bebe", type="integer", nullable=false)
-     */
-    private $bebe;
-
-    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateachat", type="date", nullable=false)
+     * @ORM\Column(name="dateachat", type="datetime", nullable=false)
      */
     private $dateachat;
 
@@ -188,54 +160,6 @@ class Billet
     public function setClasse(string $classe): self
     {
         $this->classe = $classe;
-
-        return $this;
-    }
-
-    public function getAdulte(): ?int
-    {
-        return $this->adulte;
-    }
-
-    public function setAdulte(int $adulte): self
-    {
-        $this->adulte = $adulte;
-
-        return $this;
-    }
-
-    public function getJeune(): ?int
-    {
-        return $this->jeune;
-    }
-
-    public function setJeune(int $jeune): self
-    {
-        $this->jeune = $jeune;
-
-        return $this;
-    }
-
-    public function getEnfant(): ?int
-    {
-        return $this->enfant;
-    }
-
-    public function setEnfant(int $enfant): self
-    {
-        $this->enfant = $enfant;
-
-        return $this;
-    }
-
-    public function getBebe(): ?int
-    {
-        return $this->bebe;
-    }
-
-    public function setBebe(int $bebe): self
-    {
-        $this->bebe = $bebe;
 
         return $this;
     }

@@ -165,18 +165,22 @@
 <tr>
   <td>Date</td>
   <td>Description</td>
-  <td>Crédit</td>
-  <td>Débit</td>
+  <td>Type</td>
+  <td>Montant</td>
 </tr>
 {% for t in transaction %}
   <tr>
 
     <td>{{t.date|date("Y-m-d")}}</td>
     <td>{{t.description}}</td>
-    <td style="color:green">+
-      {{t.credit}}</td>
-    <td style="color:red">-
-      {{t.debit}}</td>
+    <td>{{t.type}}</td>
+    {% if t.type =="credit" %} 
+      <td style="color:green">+
+        {{t.montant}}</td>
+    {% else %}
+      <td style="color:red">-
+        {{t.montant}}</td>
+    {% endif %}
   </tr>
 {% endfor %}
 

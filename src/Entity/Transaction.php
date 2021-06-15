@@ -22,23 +22,23 @@ class Transaction
     private $id;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="credit", type="integer", nullable=false)
+     * @ORM\Column(name="type", type="string", length=10, nullable=false)
      */
-    private $credit;
+    private $type;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="debit", type="integer", nullable=false)
+     * @ORM\Column(name="montant", type="integer", nullable=false)
      */
-    private $debit;
+    private $montant;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date", nullable=false)
+     * @ORM\Column(name="date", type="datetime", nullable=false)
      */
     private $date;
 
@@ -64,26 +64,26 @@ class Transaction
         return $this->id;
     }
 
-    public function getCredit(): ?int
+    public function getType(): ?string
     {
-        return $this->credit;
+        return $this->type;
     }
 
-    public function setCredit(int $credit): self
+    public function setType(string $type): self
     {
-        $this->credit = $credit;
+        $this->type = $type;
 
         return $this;
     }
 
-    public function getDebit(): ?int
+    public function getMontant(): ?int
     {
-        return $this->debit;
+        return $this->montant;
     }
 
-    public function setDebit(int $debit): self
+    public function setMontant(int $montant): self
     {
-        $this->debit = $debit;
+        $this->montant = $montant;
 
         return $this;
     }
